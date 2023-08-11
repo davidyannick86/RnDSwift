@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<title>Type énuméré</title>
+	</head>
+<body>
+<h1>Type énuméré</h1>
+
+<h2>Définition</h2>
+
+<p>Une énumération en programmation est un type de données qui permet de définir un ensemble fini de valeurs nommées. <br/>Cela facilite la représentation de concepts avec un ensemble restreint de choix prédéfinis. <br/>En général, une énumération est définie en tant qu&#39;une liste de constantes nommées, appelées membres de l&#39;énumération, qui représentent les différentes valeurs possibles. <br/>Par exemple, en <strong>swift</strong> :</p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-keyword">enum</span> <span class="syntax-all syntax-entity">Couleur</span> {
+	<span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">ROUGE</span>
+	<span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">VERT</span>
+	<span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">BLEU</span>
+}</code></pre>
+
+<p>Dans cet exemple, l&#39;énumération « Couleur » est définie avec trois membres&nbsp;: ROUGE, VERT et BLEU. Ces membres peuvent ensuite être utilisés pour déclarer des variables ou effectuer des comparaisons dans le code.</p>
+
+<h2>Utilisation d’un Enum simple</h2>
+
+<p>Soit l’énumération suivante, qui représente les jours de la semaine : </p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-keyword">enum</span> <span class="syntax-all syntax-entity">DaysOfWeek</span> {
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">sunday</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">monday</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">tuesday</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">wednesday</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">thursday</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">friday</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">saturday</span>
+}</code></pre>
+
+<h2>Utilisation d’une énumération dans une fonction</h2>
+
+<h3>Exemple 1 - Fonction <em>whatToDo</em></h3>
+
+<p>Imaginons une fonction <strong>whatToDo</strong> qui permet de savoir que faire tel jour, cette fonction aura pour signature :</p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-keyword">func</span> <span class="syntax-all syntax-entity">whatToDo</span>(<span class="syntax-all syntax-entity">day</span>: DaysOfWeek) <span class="syntax-all syntax-keyword">-&gt;</span> <span class="syntax-all syntax-constant">String</span> {
+ <span class="syntax-all syntax-comment">// TODO CODE</span>
+}</code></pre>
+
+<p>Maintenant, nous allons faire un switch sur la variable <em>day</em>: </p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-keyword">func</span> <span class="syntax-all syntax-entity">whatToDo</span>(<span class="syntax-all syntax-entity">day</span>: DaysOfWeek) <span class="syntax-all syntax-keyword">-&gt;</span> <span class="syntax-all syntax-constant">String</span> {
+    <span class="syntax-all syntax-keyword">switch</span> day {
+        <span class="syntax-all syntax-keyword">case</span> .<span class="syntax-all syntax-parameter">sunday</span><span class="syntax-all syntax-keyword">:</span>
+            <span class="syntax-all syntax-keyword">return</span> <span class="syntax-all syntax-string">&quot;Go to churche&quot;</span>
+        <span class="syntax-all syntax-keyword">case</span> .<span class="syntax-all syntax-parameter">monday</span><span class="syntax-all syntax-keyword">:</span>
+            <span class="syntax-all syntax-keyword">return</span> <span class="syntax-all syntax-string">&quot;Go to work&quot;</span>
+        <span class="syntax-all syntax-keyword">case</span> .<span class="syntax-all syntax-parameter">tuesday</span><span class="syntax-all syntax-keyword">:</span>
+            <span class="syntax-all syntax-keyword">return</span> <span class="syntax-all syntax-string">&quot;Back to work&quot;</span>
+        <span class="syntax-all syntax-keyword">case</span> .<span class="syntax-all syntax-parameter">wednesday</span><span class="syntax-all syntax-keyword">:</span>
+            <span class="syntax-all syntax-keyword">return</span> <span class="syntax-all syntax-string">&quot;go to gym&quot;</span>
+        <span class="syntax-all syntax-keyword">case</span> .<span class="syntax-all syntax-parameter">thursday</span><span class="syntax-all syntax-keyword">:</span>
+            <span class="syntax-all syntax-keyword">return</span> <span class="syntax-all syntax-string">&quot;One more day&quot;</span>
+        <span class="syntax-all syntax-keyword">case</span> .<span class="syntax-all syntax-parameter">friday</span><span class="syntax-all syntax-keyword">:</span>
+            <span class="syntax-all syntax-keyword">return</span> <span class="syntax-all syntax-string">&quot;last day&quot;</span>
+        <span class="syntax-all syntax-keyword">case</span> .<span class="syntax-all syntax-parameter">saturday</span><span class="syntax-all syntax-keyword">:</span>
+            <span class="syntax-all syntax-keyword">return</span> <span class="syntax-all syntax-string">&quot;go shoping&quot;</span>
+    }
+}</code></pre>
+
+<p>L’utilisation est alors triviale : </p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-constant">print</span>(<span class="syntax-all syntax-constant">whatToDo</span>(<span class="syntax-all syntax-constant">day</span>: .<span class="syntax-all syntax-parameter">saturday</span>))</code></pre>
+
+<p>Cela nous donnera en sortie : </p>
+
+<pre><code class="code-highlighted code-swift">go shoping</code></pre>
+
+<p>Comme prévu.</p>
+
+<h3>Exemple 2 - Fonction <em>isWeekendDay</em></h3>
+
+<p>Cette fois, nous allons créer une fonction <strong>isWeekendDay</strong> qui permettra de savoir si un jour fait partie du weekend ou non. <br/>La signature de cette fonction sera :</p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-keyword">func</span> <span class="syntax-all syntax-entity">isItWeekend</span>(<span class="syntax-all syntax-entity">day</span>: DaysOfWeek) <span class="syntax-all syntax-keyword">-&gt;</span> <span class="syntax-all syntax-constant">Bool</span> {
+    <span class="syntax-all syntax-keyword">switch</span> day {
+        <span class="syntax-all syntax-keyword">case</span> .<span class="syntax-all syntax-parameter">saturday</span>, .<span class="syntax-all syntax-parameter">sunday</span><span class="syntax-all syntax-keyword">:</span>
+            <span class="syntax-all syntax-keyword">return</span> <span class="syntax-all syntax-constant">true</span>
+        <span class="syntax-all syntax-keyword">default:</span>
+            <span class="syntax-all syntax-keyword">return</span> <span class="syntax-all syntax-constant">false</span>
+    }
+}</code></pre>
+
+<p>Ici le paramètre est encore un paramètre du type DaysOfWeek, on switch sur la variable day et si c’est un samedi ou un dimanche alors on retourne true.<br/>Ce que nous pouvons tester comme ceci :</p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-constant">print</span>(<span class="syntax-all syntax-constant">isItWeekend</span>(<span class="syntax-all syntax-constant">day</span>: .<span class="syntax-all syntax-parameter">friday</span>).<span class="syntax-all syntax-constant">description</span>) <span class="syntax-all syntax-comment">// Output: false</span>
+<span class="syntax-all syntax-constant">print</span>(<span class="syntax-all syntax-constant">isItWeekend</span>(<span class="syntax-all syntax-constant">day</span>: .<span class="syntax-all syntax-parameter">sunday</span>).<span class="syntax-all syntax-constant">description</span>) <span class="syntax-all syntax-comment">// Output: true</span></code></pre>
+
+<h2>rawValue</h2>
+
+<p>Maintenant, imaginons que nous souhaitions accéder à la valeur de l’énumération, par exemple, on peut écrire :</p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-constant">print</span>(DaysOfWeek.<span class="syntax-all syntax-parameter">friday</span>) </code></pre>
+
+<p>La sortie sera :</p>
+
+<pre><code class="code-highlighted code-swift">friday</code></pre>
+
+<p>Mais, maintenant, imaginons une seconde énumération :</p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-keyword">enum</span> <span class="syntax-all syntax-entity">Numbers</span> {
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">one</span>        
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">two</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">three</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">four</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">five</span>
+}</code></pre>
+
+<p>Cette fois si on écrit :</p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-constant">print</span>(Numbers.<span class="syntax-all syntax-parameter">four</span>)</code></pre>
+
+<p>Ainsi la sortie sera : </p>
+
+<pre><code class="code-highlighted code-swift">four</code></pre>
+
+<p>Ce qui ne sert pas à grand-chose.</p>
+
+<p>Alors, nous allons reprendre la première énumération et la faire se conformer à <strong>String</strong> et attribuer à chaque cas une valeur :</p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-keyword">enum</span> <span class="syntax-all syntax-entity">DaysOfWeek</span>: String {
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">sunday</span>     <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-string">&quot;Sun&quot;</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">monday</span>     <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-string">&quot;Mon&quot;</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">tuesday</span>    <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-string">&quot;Tue&quot;</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">wednesday</span>  <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-string">&quot;Wed&quot;</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">thursday</span>   <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-string">&quot;Thur&quot;</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">friday</span>     <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-string">&quot;Fri&quot;</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">saturday</span>   <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-string">&quot;Sat&quot;</span>
+}</code></pre>
+
+<p>Cette fois si on utilise la même méthode que précédemment, mais en appelant la propriété <strong>rawValue</strong>:</p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-constant">print</span>(DaysOfWeek.<span class="syntax-all syntax-parameter">friday</span>.<span class="syntax-all syntax-constant">rawValue</span>) </code></pre>
+
+<p>La sortie sera cette fois : </p>
+
+<pre><code class="code-highlighted code-swift">Fri</code></pre>
+
+<p>Ainsi ou l’utilité devient plus évidente avec la seconde énumération <strong>Numbers</strong> et faisons là se conformer à <strong>Int</strong>:</p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-keyword">enum</span> <span class="syntax-all syntax-entity">Numbers</span>: Int {
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">one</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">two</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">three</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">four</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">five</span>
+}</code></pre>
+
+<p>Cette fois si on appelle la propriété <strong>rawValue</strong> :</p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-constant">print</span>(Numbers.<span class="syntax-all syntax-parameter">four</span>.<span class="syntax-all syntax-constant">rawValue</span>)</code></pre>
+
+<p>On Obtient en sortie : <code>3</code></p>
+
+<p>Maintenant, modifions un peu notre énumération en ajoutant au premier cas une valeur de type Int, juste sur la première valeur, car les autres valeurs seront autoincrémentées : </p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-keyword">enum</span> <span class="syntax-all syntax-entity">Numbers</span>: Int {
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">one</span> <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-constant">1</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">two</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">three</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">four</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">five</span>
+}</code></pre>
+
+<p>Cette fois :</p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-constant">print</span>(Numbers.<span class="syntax-all syntax-parameter">four</span>.<span class="syntax-all syntax-constant">rawValue</span>)</code></pre>
+
+<p>Retournera : <code>4</code></p>
+
+<p>Évidemment, si on modifie la valeur initiale à -1 par exemple, alors la sortie sera : <code>2</code></p>
+
+<h2>Enum et Collections</h2>
+
+<p>Il est tout à fait possible de parcourir une énumération comme une collection, pour ce faire, vérifier que l’énumération se conforme à <strong>CaseIterable</strong>, notre première énumération devient ainsi :</p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-keyword">enum</span> <span class="syntax-all syntax-entity">DaysOfWeek</span>: String, CaseIterable {
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">sunday</span>     <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-string">&quot;Sun&quot;</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">monday</span>     <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-string">&quot;Mon&quot;</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">tuesday</span>    <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-string">&quot;Tue&quot;</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">wednesday</span>  <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-string">&quot;Wed&quot;</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">thursday</span>   <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-string">&quot;Thur&quot;</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">friday</span>     <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-string">&quot;Fri&quot;</span>
+    <span class="syntax-all syntax-keyword">case</span> <span class="syntax-all syntax-constant">saturday</span>   <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-string">&quot;Sat&quot;</span>
+}</code></pre>
+
+<p>Maintenant, nous pouvons appliquer les opérations dédiées aux collections à nos énumérations.</p>
+
+<h3>Exemple 1</h3>
+
+<p>Imaginons que nous souhaitions mettre en majuscule toutes les <strong>rawValue</strong> et les afficher :</p>
+
+<pre><code class="code-highlighted code-swift">DaysOfWeek
+    .<span class="syntax-all syntax-parameter">allCases</span>
+    .<span class="syntax-all syntax-constant">map</span> { <span class="syntax-all syntax-constant">$0</span>.<span class="syntax-all syntax-constant">rawValue</span>.<span class="syntax-all syntax-constant">uppercased</span>() }
+    .<span class="syntax-all syntax-constant">forEach</span> { <span class="syntax-all syntax-constant">print</span>(<span class="syntax-all syntax-constant">$0</span>) }</code></pre>
+
+<p>Ce qui nous donne en sortie : </p>
+
+<pre><code class="code-highlighted code-swift">SUN
+MON
+TUE
+WED
+THUR
+FRI
+SAT</code></pre>
+
+<h3>Exemple 2</h3>
+
+<p>Nous voulons parcourir les valeurs de l’énumération et afficher si ce jour fait partie du weekend ou non :</p>
+
+<pre><code class="code-highlighted code-swift">DaysOfWeek
+    .<span class="syntax-all syntax-parameter">allCases</span>
+    .<span class="syntax-all syntax-constant">map</span> {
+        <span class="syntax-all syntax-keyword">switch</span> <span class="syntax-all syntax-constant">$0</span> {
+            <span class="syntax-all syntax-keyword">case</span> .<span class="syntax-all syntax-parameter">saturday</span>, .<span class="syntax-all syntax-parameter">sunday</span><span class="syntax-all syntax-keyword">:</span>
+                <span class="syntax-all syntax-constant">print</span>(<span class="syntax-all syntax-string">&quot;\(</span><span class="syntax-all syntax-constant">$0</span><span class="syntax-all syntax-string">) is weekend&quot;</span>)
+            <span class="syntax-all syntax-keyword">default:</span>
+                <span class="syntax-all syntax-constant">print</span>(<span class="syntax-all syntax-string">&quot;\(</span><span class="syntax-all syntax-constant">$0</span><span class="syntax-all syntax-string">) is workday&quot;</span>)
+        }
+    }</code></pre>
+
+<p>Ce qui propose en sortie :</p>
+
+<pre><code class="code-highlighted code-bash">sunday is weekend
+monday is workday
+tuesday is workday
+wednesday is workday
+thursday is workday
+friday is workday
+saturday is weekend</code></pre>
+
+</body>
+</html>
+
