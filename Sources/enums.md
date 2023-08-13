@@ -39,7 +39,7 @@ Maintenant, nous allons faire un switch sur la variable _day_:
 func whatToDo(day: DaysOfWeek) -> String {
     switch day {
         case .sunday:
-            return "Go to churche"
+            return "Go to church"
         case .monday:
             return "Go to work"
         case .tuesday:
